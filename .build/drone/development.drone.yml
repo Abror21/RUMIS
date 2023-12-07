@@ -1,0 +1,285 @@
+kind: pipeline
+type: docker
+name: Test backend
+
+trigger:
+  branch:
+  - master
+  event:
+    include:
+    - pull_request
+
+clone:
+  disable: true
+
+steps:
+- name: Clone
+  image: alpine/git
+  environment:
+    GITLAB_ACCESS_TOKEN:
+      from_secret: GitLab.AccessToken
+  commands:
+  - git -c http.sslVerify=false clone https://oauth2:$GITLAB_ACCESS_TOKEN@gitlab.dzc.lv/$DRONE_REPO.git .
+  - git checkout $DRONE_SOURCE_BRANCH
+  - git checkout $DRONE_TARGET_BRANCH
+  - git merge $DRONE_SOURCE_BRANCH
+
+- name: Run tests
+  image: mcr.microsoft.com/dotnet/sdk:7.0
+  commands:
+  - dotnet test .build/Izm.Rumis.sln
+
+---
+kind: pipeline
+type: docker
+name: CD entry
+
+trigger:
+  branch:
+  - master
+  event:
+    exclude:
+    - pull_request
+
+clone:
+  disable: true
+
+steps:
+- name: Clone
+  image: alpine/git
+  commands:
+  - git --version
+
+---
+kind: pipeline
+type: docker
+name: Build rumis/app Docker image
+
+trigger:
+  branch:
+  - master
+  event:
+    exclude:
+    - pull_request
+
+clone:
+  disable: true
+
+steps:
+- name: Clone
+  image: alpine/git
+  environment:
+    GITLAB_ACCESS_TOKEN:
+      from_secret: GitLab.AccessToken
+  commands:
+  - git -c http.sslVerify=false clone https://oauth2:$GITLAB_ACCESS_TOKEN@gitlab.dzc.lv/$DRONE_REPO.git .
+  - git checkout $DRONE_COMMIT
+
+- name: Build and push Docker image
+  image: plugins/docker
+  settings:
+    repo: docker-registry.dzc.lv/rumis/app
+    context: .
+    dockerfile: Izm.Rumis/Izm.Rumis.App/ClientApp/Dockerfile
+    tags:
+      - latest
+      - ${DRONE_COMMIT}
+    dry_run: false
+    registry: docker-registry.dzc.lv
+    build_args: BUILDKIT_INLINE_CACHE=1
+    cache_from:
+      - docker-registry.dzc.lv/rumis/app:latest
+    insecure: true
+
+depends_on:
+- CD entry
+
+---
+kind: pipeline
+type: docker
+name: Build rumis/api Docker image
+
+trigger:
+  branch:
+  - master
+  event:
+    exclude:
+    - pull_request
+
+clone:
+  disable: true
+
+steps:
+- name: Clone
+  image: alpine/git
+  environment:
+    GITLAB_ACCESS_TOKEN:
+      from_secret: GitLab.AccessToken
+  commands:
+  - git -c http.sslVerify=false clone https://oauth2:$GITLAB_ACCESS_TOKEN@gitlab.dzc.lv/$DRONE_REPO.git .
+  - git checkout $DRONE_COMMIT
+
+- name: Build and push Docker image
+  image: plugins/docker
+  settings:
+    repo: docker-registry.dzc.lv/rumis/api
+    context: .
+    dockerfile: Izm.Rumis/Izm.Rumis.Api/Dockerfile
+    tags:
+      - latest
+      - ${DRONE_COMMIT}
+    dry_run: false
+    registry: docker-registry.dzc.lv
+    build_args: BUILDKIT_INLINE_CACHE=1
+    cache_from:
+      - docker-registry.dzc.lv/rumis/api:latest
+    insecure: true
+
+depends_on:
+- Build rumis/app Docker image
+
+---
+kind: pipeline
+type: docker
+name: Build rumis/auth Docker image
+
+trigger:
+  branch:
+  - master
+  event:
+    exclude:
+    - pull_request
+
+clone:
+  disable: true
+
+steps:
+- name: Clone
+  image: alpine/git
+  environment:
+    GITLAB_ACCESS_TOKEN:
+      from_secret: GitLab.AccessToken
+  commands:
+  - git -c http.sslVerify=false clone https://oauth2:$GITLAB_ACCESS_TOKEN@gitlab.dzc.lv/$DRONE_REPO.git .
+  - git checkout $DRONE_COMMIT
+
+- name: Build and push Docker image
+  image: plugins/docker
+  settings:
+    repo: docker-registry.dzc.lv/rumis/auth
+    context: .
+    dockerfile: Izm.Rumis/Izm.Rumis.Auth/Dockerfile
+    tags:
+      - latest
+      - ${DRONE_COMMIT}
+    dry_run: false
+    registry: docker-registry.dzc.lv
+    build_args: BUILDKIT_INLINE_CACHE=1
+    cache_from:
+      - docker-registry.dzc.lv/rumis/auth:latest
+    insecure: true
+
+depends_on:
+- Build rumis/api Docker image
+
+---
+kind: pipeline
+type: docker
+name: Build rumis/tasks Docker image
+
+trigger:
+  branch:
+  - master
+  event:
+    exclude:
+    - pull_request
+
+clone:
+  disable: true
+
+steps:
+- name: Clone
+  image: alpine/git
+  environment:
+    GITLAB_ACCESS_TOKEN:
+      from_secret: GitLab.AccessToken
+  commands:
+  - git -c http.sslVerify=false clone https://oauth2:$GITLAB_ACCESS_TOKEN@gitlab.dzc.lv/$DRONE_REPO.git .
+  - git checkout $DRONE_COMMIT
+
+- name: Build and push Docker image
+  image: plugins/docker
+  settings:
+    repo: docker-registry.dzc.lv/rumis/tasks
+    context: .
+    dockerfile: Izm.Rumis/Izm.Rumis.Tasks/Dockerfile
+    tags:
+      - latest
+      - ${DRONE_COMMIT}
+    dry_run: false
+    registry: docker-registry.dzc.lv
+    build_args: BUILDKIT_INLINE_CACHE=1
+    cache_from:
+      - docker-registry.dzc.lv/rumis/tasks:latest
+    insecure: true
+
+depends_on:
+- Build rumis/auth Docker image
+
+---
+kind: pipeline
+name: Deploy to k8s
+
+trigger:
+  branch:
+  - master
+  event:
+    exclude:
+    - pull_request
+
+clone:
+  disable: true
+
+steps:
+- name: Clone
+  image: alpine/git
+  environment:
+    GITLAB_ACCESS_TOKEN:
+      from_secret: GitLab.AccessToken
+  commands:
+  - git -c http.sslVerify=false clone https://oauth2:$GITLAB_ACCESS_TOKEN@gitlab.dzc.lv/$DRONE_REPO.git .
+  - git checkout $DRONE_COMMIT
+  
+- name: Deploy to k8s
+  image: ubuntu:latest
+  environment:
+    ACCESS_TOKEN:
+      from_secret: K8s.AccessToken
+    DATABASE_CONNECTION_STRING:
+      from_secret: Rumis.Database.ConnectionString
+    MYSQL_VERSION:
+      from_secret: Rumis.Database.MySql.Version
+    K8s_API:
+      from_secret: K8s.MasterNode.Api
+    HELM_VALUES:
+      from_secret: Helm.Values
+  commands:
+  - apt-get update
+  - apt-get install curl -y
+  - apt-get install gpg -y
+  - curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | tee /usr/share/keyrings/helm.gpg > /dev/null
+  - apt-get install apt-transport-https --yes
+  - echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | tee /etc/apt/sources.list.d/helm-stable-debian.list
+  - apt-get update
+  - apt-get install helm
+  - curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+  - install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+  - kubectl version --client
+  - kubectl config set-cluster target-cluster --server=$K8s_API
+  - kubectl config set-context target-context --cluster=target-cluster
+  - kubectl config use-context target-context
+  - echo $HELM_VALUES | base64 -d > decoded.yml || true
+  - helm upgrade --namespace rumis rumis ./.build/helm/rumis/ -f decoded.yml --install --insecure-skip-tls-verify --kube-insecure-skip-tls-verify --set tag=$DRONE_COMMIT --kube-token=$ACCESS_TOKEN
+  
+depends_on:
+- Build rumis/tasks Docker image

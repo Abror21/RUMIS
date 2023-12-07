@@ -1,0 +1,50 @@
+version: '3.4'
+
+services:
+  izm.rumis.api:
+    image: ${DOCKER_REGISTRY-}izmrumisapi
+    build:
+      context: ../../
+      dockerfile: Izm.Rumis/Izm.Rumis.Api/Dockerfile
+
+  izm.rumis.auth:
+    image: ${DOCKER_REGISTRY-}izmrumisauth
+    build:
+      context: ../../
+      dockerfile: Izm.Rumis/Izm.Rumis.Auth/Dockerfile
+
+  izm.rumis.app:
+    image: ${DOCKER_REGISTRY-}izmrumisapp
+    build:
+      context: ../../
+      dockerfile: Izm.Rumis/Izm.Rumis.App/ClientApp/Dockerfile.local
+    volumes:
+      - ../../Izm.Rumis/Izm.Rumis.App/ClientApp:/app
+      - /app/node_modules
+    ports:
+      - "4200:4200"
+
+  db:
+    image: mariadb:latest
+    container_name: db
+    ports:
+      - "3306:3306"
+    environment:
+      - MARIADB_ROOT_PASSWORD=root
+
+  s3:
+    image: quay.io/minio/minio
+    container_name: s3
+    ports:
+      - "9090:9090"
+      - "9000:9000"
+    environment:
+      - MINIO_ROOT_USER=root
+      - MINIO_ROOT_PASSWORD=mysuperdupersecret
+    command: server /data --console-address ":9090"
+
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - "6379:6379"

@@ -1,0 +1,5 @@
+<RUMIS_socialie_statusi xmlns="">
+  <Student  Name="MĀRTIŅŠ" OtherNames="" Surname="DARĢIS" PersonCode="01019111750">
+    <SocialStatus DateTo="2024-10-15T00:00:00+03:00" StatusTypeCode="I" StatusTypeName="Invaliditāte"/>
+  </Student>
+</RUMIS_socialie_statusi>

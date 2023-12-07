@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rumis-auth
+spec:
+  replicas: {{ .Values.replicas.auth }}
+  selector:
+    matchLabels:
+      app: rumis-auth
+  template:
+    metadata:
+      labels:
+        app: rumis-auth
+    spec:
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecrets }}
+      {{- end }}
+      containers:
+      - name: rumis-auth
+        image: {{ .Values.registry }}/rumis/auth:{{ .Values.tag }}
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: "{{ .Values.resources.auth.limits.cpu }}"
+            memory: "{{ .Values.resources.auth.limits.memory }}"
+          requests:
+            cpu: "{{ .Values.resources.auth.requests.cpu }}"
+            memory: "{{ .Values.resources.auth.requests.memory }}"
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 80
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 80
+        envFrom:
+          - configMapRef:
+              name: rumis-auth-config
+          - secretRef:
+              name: rumis-auth-secret

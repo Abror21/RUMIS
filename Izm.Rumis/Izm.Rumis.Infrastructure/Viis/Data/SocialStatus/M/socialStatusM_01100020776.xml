@@ -1,0 +1,5 @@
+<RUMIS_socialie_statusi xmlns="">
+  <Student Name="VILJAMS" OtherNames="" Surname="BLŪMS" PersonCode="01100020776">
+    <SocialStatus DateTo="2024-10-15T00:00:00+03:00" StatusTypeCode="M" StatusTypeName="Maznodrošinātas ģimenes statuss"/>
+  </Student>
+</RUMIS_socialie_statusi>

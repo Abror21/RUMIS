@@ -1,0 +1,6 @@
+<RUMIS_darbinieku_dati xmlns="">
+  <Employee PersonCode="00000000000" Name="ADMIN" OtherNames="" Surname="ADMIN">
+    <Institution RegNr="4313901280" Name="Ādažu vidusskola" FounderUrCode="90000048472" PositionName="Interešu izglītības skolotājs" PositionCode="235906"/>
+    <Institution RegNr="4313901280" Name="Ādažu vidusskola" FounderUrCode="90000048472" PositionName="Skolas direktors" PositionCode="134508"/>
+  </Employee>
+</RUMIS_darbinieku_dati>

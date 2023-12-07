@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rumis-auth
+spec:
+  selector:
+    app: rumis-auth
+  ports:
+  - port: 80
+    targetPort: 80

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rumis-tasks
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rumis-tasks
+  template:
+    metadata:
+      labels:
+        app: rumis-tasks
+    spec:
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecrets }}
+      {{- end }}
+      containers:
+      - name: rumis-tasks
+        image: {{ .Values.registry }}/rumis/tasks:{{ .Values.tag }}
+        resources:
+          limits:
+            cpu: "{{ .Values.resources.tasks.limits.cpu }}"
+            memory: "{{ .Values.resources.tasks.limits.memory }}"
+          requests:
+            cpu: "{{ .Values.resources.tasks.requests.cpu }}"
+            memory: "{{ .Values.resources.tasks.requests.memory }}"
+        envFrom:
+          - configMapRef:
+              name: rumis-tasks-config
+          - secretRef:
+              name: rumis-tasks-secret

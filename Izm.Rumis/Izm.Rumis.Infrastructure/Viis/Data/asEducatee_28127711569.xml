@@ -1,0 +1,8 @@
+<RUMIS_dati xmlns="">
+   <Student Name="ANDRIS" OtherNames="" Surname="VĪTOLIŅŠ" PersonCode="28127711569" BirthDate="2005-01-10T00:00:00+02:00" SubStatus="">
+      <Institution Name="Ventspils Valsts 1. ģimnāzija" RegNr="3219903101" FounderName="Ventspils valstspilsētas pašvaldības iestāde &quot;Ventspils domes administrācija&quot;" FounderATUCCode="007000">
+         <Class Type="K" ClassGrade="12" Parallel="b" GroupName="" EducationProgramName="Vispārējās vidējās izglītības programma" EducationProgramCode="31016011"/>
+         <StudyParticapition EducationProgramName="Vispārējās vidējās izglītības programma" EducationProgramCode="31016011"/>
+      </Institution>
+   </Student>
+</RUMIS_dati>

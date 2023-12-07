@@ -1,0 +1,358 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Configurations>Debug;Release</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Izm.Rumis.Infrastructure.csproj.vspscc" />
+    <None Remove="Scripts\CreateModifProcedure.sql" />
+    <None Remove="Seeders\Data\classifiers.csv" />
+    <None Remove="Seeders\Data\parameters.csv" />
+    <None Remove="Seeders\Data\text_templates.csv" />
+    <None Remove="Viis\Data\asEducatee_00000000000.xml" />
+    <None Remove="Viis\Data\asEducatee_01011501121.xml" />
+    <None Remove="Viis\Data\asEducatee_01019111750.xml" />
+    <None Remove="Viis\Data\asEducatee_01100020776.xml" />
+    <None Remove="Viis\Data\asEducatee_03071120231.xml" />
+    <None Remove="Viis\Data\asEducatee_05061820032.xml" />
+    <None Remove="Viis\Data\asEducatee_06107812760.xml" />
+    <None Remove="Viis\Data\asEducatee_07031020306.xml" />
+    <None Remove="Viis\Data\asEducatee_07089111577.xml" />
+    <None Remove="Viis\Data\asEducatee_09097610009.xml" />
+    <None Remove="Viis\Data\asEducatee_11050820300.xml" />
+    <None Remove="Viis\Data\asEducatee_12345610001.xml" />
+    <None Remove="Viis\Data\asEducatee_14028310738.xml" />
+    <None Remove="Viis\Data\asEducatee_15129810701.xml" />
+    <None Remove="Viis\Data\asEducatee_21039511012.xml" />
+    <None Remove="Viis\Data\asEducatee_21069411768.xml" />
+    <None Remove="Viis\Data\asEducatee_21098912852.xml" />
+    <None Remove="Viis\Data\asEducatee_23232310001.xml" />
+    <None Remove="Viis\Data\asEducatee_26128811861.xml" />
+    <None Remove="Viis\Data\asEducatee_28127711569.xml" />
+    <None Remove="Viis\Data\asEducatee_31011501123.xml" />
+    <None Remove="Viis\Data\asEducatee_32009938721.xml" />
+    <None Remove="Viis\Data\asEducatee_32021170970.xml" />
+    <None Remove="Viis\Data\asEducatee_32097855087.xml" />
+    <None Remove="Viis\Data\asEducatee_32104888849.xml" />
+    <None Remove="Viis\Data\asEducatee_32113553266.xml" />
+    <None Remove="Viis\Data\asEducatee_32127098188.xml" />
+    <None Remove="Viis\Data\asEducatee_32212148717.xml" />
+    <None Remove="Viis\Data\asEducatee_32219648845.xml" />
+    <None Remove="Viis\Data\asEducatee_32285436269.xml" />
+    <None Remove="Viis\Data\asEducatee_32293946453.xml" />
+    <None Remove="Viis\Data\asEducatee_32306211190.xml" />
+    <None Remove="Viis\Data\asEducatee_32317741322.xml" />
+    <None Remove="Viis\Data\asEducatee_32348092820.xml" />
+    <None Remove="Viis\Data\asEducatee_32366129543.xml" />
+    <None Remove="Viis\Data\asEducatee_32406535176.xml" />
+    <None Remove="Viis\Data\asEducatee_32448369196.xml" />
+    <None Remove="Viis\Data\asEducatee_32472941017.xml" />
+    <None Remove="Viis\Data\asEducatee_32490279418.xml" />
+    <None Remove="Viis\Data\asEducatee_32529967462.xml" />
+    <None Remove="Viis\Data\asEducatee_32539553650.xml" />
+    <None Remove="Viis\Data\asEducatee_32556073624.xml" />
+    <None Remove="Viis\Data\asEducatee_32560444758.xml" />
+    <None Remove="Viis\Data\asEducatee_32567019965.xml" />
+    <None Remove="Viis\Data\asEducatee_32575473594.xml" />
+    <None Remove="Viis\Data\asEducatee_32591648227.xml" />
+    <None Remove="Viis\Data\asEducatee_32690712722.xml" />
+    <None Remove="Viis\Data\asEducatee_32725186639.xml" />
+    <None Remove="Viis\Data\asEducatee_32879125126.xml" />
+    <None Remove="Viis\Data\asEducatee_32894626148.xml" />
+    <None Remove="Viis\Data\asEducatee_35061820033.xml" />
+    <None Remove="Viis\Data\asEmployee_00000000000.xml" />
+    <None Remove="Viis\Data\asEmployee_01019111750.xml" />
+    <None Remove="Viis\Data\asEmployee_01100020776.xml" />
+    <None Remove="Viis\Data\asEmployee_06107812760.xml" />
+    <None Remove="Viis\Data\asEmployee_07089111577.xml" />
+    <None Remove="Viis\Data\asEmployee_09097610009.xml" />
+    <None Remove="Viis\Data\asEmployee_14028310738.xml" />
+    <None Remove="Viis\Data\asEmployee_15129810701.xml" />
+    <None Remove="Viis\Data\asEmployee_21039511012.xml" />
+    <None Remove="Viis\Data\asEmployee_21069411768.xml" />
+    <None Remove="Viis\Data\asEmployee_21098912852.xml" />
+    <None Remove="Viis\Data\asEmployee_26128811861.xml" />
+    <None Remove="Viis\Data\asEmployee_28127711569.xml" />
+    <None Remove="Viis\Data\asParentOrGuardian_00000000000.xml" />
+    <None Remove="Viis\Data\asParentOrGuardian_00000000007.xml" />
+    <None Remove="Viis\Data\asParentOrGuardian_01019111750.xml" />
+    <None Remove="Viis\Data\asParentOrGuardian_01100020776.xml" />
+    <None Remove="Viis\Data\asParentOrGuardian_05029910124.xml" />
+    <None Remove="Viis\Data\asParentOrGuardian_06107812760.xml" />
+    <None Remove="Viis\Data\asParentOrGuardian_07089111577.xml" />
+    <None Remove="Viis\Data\asParentOrGuardian_07127310500.xml" />
+    <None Remove="Viis\Data\asParentOrGuardian_09097610009.xml" />
+    <None Remove="Viis\Data\asParentOrGuardian_11128712896.xml" />
+    <None Remove="Viis\Data\asParentOrGuardian_14028310738.xml" />
+    <None Remove="Viis\Data\asParentOrGuardian_15129810701.xml" />    
+    <None Remove="Viis\Data\asParentOrGuardian_21039511012.xml" />
+    <None Remove="Viis\Data\asParentOrGuardian_21069411768.xml" />
+    <None Remove="Viis\Data\asParentOrGuardian_21098912852.xml" />
+    <None Remove="Viis\Data\asParentOrGuardian_23058011709.xml" />
+    <None Remove="Viis\Data\asParentOrGuardian_26128811861.xml" />
+    <None Remove="Viis\Data\asParentOrGuardian_28127711569.xml" />
+    <None Remove="Viis\Data\asParentOrGuardian_00000000008.xml" />
+    <None Remove="Viis\Data\socialStatusM_00000000000.xml" />
+    <None Remove="Viis\Data\SocialStatus\I\socialStatusI_00000000000.xml" />
+    <None Remove="Viis\Data\SocialStatus\I\socialStatusI_01019111750.xml" />
+    <None Remove="Viis\Data\SocialStatus\I\socialStatusI_01100020776.xml" />
+    <None Remove="Viis\Data\SocialStatus\I\socialStatusI_06107812760.xml" />
+    <None Remove="Viis\Data\SocialStatus\I\socialStatusI_07089111577.xml" />
+    <None Remove="Viis\Data\SocialStatus\I\socialStatusI_09097610009.xml" />
+    <None Remove="Viis\Data\SocialStatus\I\socialStatusI_14028310738.xml" />
+    <None Remove="Viis\Data\SocialStatus\I\socialStatusI_15129810701.xml" />
+    <None Remove="Viis\Data\SocialStatus\I\socialStatusI_21039511012.xml" />
+    <None Remove="Viis\Data\SocialStatus\I\socialStatusI_21069411768.xml" />
+    <None Remove="Viis\Data\SocialStatus\I\socialStatusI_21098912852.xml" />
+    <None Remove="Viis\Data\SocialStatus\I\socialStatusI_26128811861.xml" />
+    <None Remove="Viis\Data\SocialStatus\I\socialStatusI_28127711569..xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (2)\socialStatusM_00000000000.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (2)\socialStatusM_01019111750.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (2)\socialStatusM_01100020776.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (2)\socialStatusM_06107812760.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (2)\socialStatusM_07089111577.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (2)\socialStatusM_09097610009.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (2)\socialStatusM_14028310738.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (2)\socialStatusM_15129810701.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (2)\socialStatusM_21039511012.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (2)\socialStatusM_21069411768.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (2)\socialStatusM_21098912852.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (2)\socialStatusM_26128811861.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (2)\socialStatusM_28127711569..xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (3)\socialStatusM_00000000000.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (3)\socialStatusM_01019111750.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (3)\socialStatusM_01100020776.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (3)\socialStatusM_06107812760.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (3)\socialStatusM_07089111577.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (3)\socialStatusM_09097610009.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (3)\socialStatusM_14028310738.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (3)\socialStatusM_15129810701.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (3)\socialStatusM_21039511012.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (3)\socialStatusM_21069411768.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (3)\socialStatusM_21098912852.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (3)\socialStatusM_26128811861.xml" />
+    <None Remove="Viis\Data\SocialStatus\M - Copy (3)\socialStatusM_28127711569..xml" />
+    <None Remove="Viis\Data\SocialStatus\M\socialStatusM_01019111750.xml" />
+    <None Remove="Viis\Data\SocialStatus\M\socialStatusM_01100020776.xml" />
+    <None Remove="Viis\Data\SocialStatus\M\socialStatusM_06107812760.xml" />
+    <None Remove="Viis\Data\SocialStatus\M\socialStatusM_07089111577.xml" />
+    <None Remove="Viis\Data\SocialStatus\M\socialStatusM_09097610009.xml" />
+    <None Remove="Viis\Data\SocialStatus\M\socialStatusM_14028310738.xml" />
+    <None Remove="Viis\Data\SocialStatus\M\socialStatusM_15129810701.xml" />
+    <None Remove="Viis\Data\SocialStatus\M\socialStatusM_21039511012.xml" />
+    <None Remove="Viis\Data\SocialStatus\M\socialStatusM_21069411768.xml" />
+    <None Remove="Viis\Data\SocialStatus\M\socialStatusM_21098912852.xml" />
+    <None Remove="Viis\Data\SocialStatus\M\socialStatusM_26128811861.xml" />
+    <None Remove="Viis\Data\SocialStatus\M\socialStatusM_28127711569..xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Scripts\CreateModifProcedure.sql" />
+    <EmbeddedResource Include="Seeders\Data\classifiers.csv" />
+    <EmbeddedResource Include="Seeders\Data\parameters.csv" />
+    <EmbeddedResource Include="Seeders\Data\text_templates.csv" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\P\socialStatusP_00000000000.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\P\socialStatusP_01019111750.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\P\socialStatusP_01100020776.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\P\socialStatusP_06107812760.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\P\socialStatusP_07089111577.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\P\socialStatusP_09097610009.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\P\socialStatusP_14028310738.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\P\socialStatusP_15129810701.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\P\socialStatusP_21039511012.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\P\socialStatusP_21069411768.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\P\socialStatusP_21098912852.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\P\socialStatusP_26128811861.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\P\socialStatusP_28127711569..xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\T\socialStatusT_00000000000.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\T\socialStatusT_01019111750.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\T\socialStatusT_01100020776.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\T\socialStatusT_06107812760.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\T\socialStatusT_07089111577.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\T\socialStatusT_09097610009.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\T\socialStatusT_14028310738.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\T\socialStatusT_15129810701.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\T\socialStatusT_21039511012.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\T\socialStatusT_21069411768.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\T\socialStatusT_21098912852.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\T\socialStatusT_26128811861.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\T\socialStatusT_28127711569..xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\I\socialStatusI_00000000000.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\I\socialStatusI_01019111750.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\I\socialStatusI_01100020776.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\I\socialStatusI_06107812760.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\I\socialStatusI_07089111577.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\I\socialStatusI_09097610009.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\I\socialStatusI_14028310738.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\I\socialStatusI_15129810701.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\I\socialStatusI_21039511012.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\I\socialStatusI_21069411768.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\I\socialStatusI_21098912852.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\I\socialStatusI_26128811861.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\I\socialStatusI_28127711569..xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\M\socialStatusM_21098912852.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\M\socialStatusM_28127711569..xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\M\socialStatusM_26128811861.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\M\socialStatusM_21069411768.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\M\socialStatusM_21039511012.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\M\socialStatusM_15129810701.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\M\socialStatusM_14028310738.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\M\socialStatusM_09097610009.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\M\socialStatusM_07089111577.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\M\socialStatusM_06107812760.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\M\socialStatusM_01100020776.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\M\socialStatusM_01019111750.xml" />
+    <EmbeddedResource Include="Viis\Data\SocialStatus\M\socialStatusM_00000000000.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_01011501121.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_03071120231.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_05061820032.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_07031020306.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_11050820300.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_12345610001.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_21069411768.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_23232310001.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_31011501123.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32009938721.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32021170970.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32097855087.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32104888849.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32113553266.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32127098188.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32212148717.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32219648845.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32285436269.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32293946453.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32306211190.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32317741322.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32348092820.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32366129543.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32406535176.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32448369196.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32472941017.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32490279418.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32529967462.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32539553650.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32556073624.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32560444758.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32567019965.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32575473594.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32591648227.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32690712722.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32725186639.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32879125126.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_32894626148.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_35061820033.xml" />
+    <EmbeddedResource Include="Viis\Data\asEmployee_09097610009.xml" />
+    <EmbeddedResource Include="Viis\Data\asEmployee_14028310738.xml" />
+    <EmbeddedResource Include="Viis\Data\asEmployee_15129810701.xml" />
+    <EmbeddedResource Include="Viis\Data\asEmployee_21039511012.xml" />
+    <EmbeddedResource Include="Viis\Data\asEmployee_21069411768.xml" />
+    <EmbeddedResource Include="Viis\Data\asEmployee_21098912852.xml" />
+    <EmbeddedResource Include="Viis\Data\asEmployee_26128811861.xml" />
+    <EmbeddedResource Include="Viis\Data\asEmployee_28127711569.xml" />
+    <EmbeddedResource Include="Viis\Data\asEmployee_07089111577.xml" />
+    <EmbeddedResource Include="Viis\Data\asEmployee_06107812760.xml" />
+    <EmbeddedResource Include="Viis\Data\asEmployee_01100020776.xml" />
+    <EmbeddedResource Include="Viis\Data\asEmployee_01019111750.xml" />
+    <EmbeddedResource Include="Viis\Data\asEmployee_00000000000.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_00000000000.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_01019111750.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_01100020776.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_06107812760.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_07089111577.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_09097610009.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_14028310738.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_21039511012.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_21098912852.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_15129810701.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_26128811861.xml" />
+    <EmbeddedResource Include="Viis\Data\asEducatee_28127711569.xml" />
+    <EmbeddedResource Include="Viis\Data\asParentOrGuardian_00000000000.xml" />
+    <EmbeddedResource Include="Viis\Data\asParentOrGuardian_00000000007.xml" />
+    <EmbeddedResource Include="Viis\Data\asParentOrGuardian_01019111750.xml" />
+    <EmbeddedResource Include="Viis\Data\asParentOrGuardian_01100020776.xml" />
+    <EmbeddedResource Include="Viis\Data\asParentOrGuardian_05029910124.xml" />
+    <EmbeddedResource Include="Viis\Data\asParentOrGuardian_06107812760.xml" />
+    <EmbeddedResource Include="Viis\Data\asParentOrGuardian_07089111577.xml" />
+    <EmbeddedResource Include="Viis\Data\asParentOrGuardian_07127310500.xml" />
+    <EmbeddedResource Include="Viis\Data\asParentOrGuardian_09097610009.xml" />
+    <EmbeddedResource Include="Viis\Data\asParentOrGuardian_11128712896.xml" />
+    <EmbeddedResource Include="Viis\Data\asParentOrGuardian_14028310738.xml" />
+    <EmbeddedResource Include="Viis\Data\asParentOrGuardian_21039511012.xml" />
+    <EmbeddedResource Include="Viis\Data\asParentOrGuardian_21069411768.xml" />
+    <EmbeddedResource Include="Viis\Data\asParentOrGuardian_21098912852.xml" />
+    <EmbeddedResource Include="Viis\Data\asParentOrGuardian_15129810701.xml" />
+    <EmbeddedResource Include="Viis\Data\asParentOrGuardian_23058011709.xml" />
+    <EmbeddedResource Include="Viis\Data\asParentOrGuardian_26128811861.xml" />
+    <EmbeddedResource Include="Viis\Data\asParentOrGuardian_28127711569.xml" />
+    <EmbeddedResource Include="Viis\Data\asParentOrGuardian_00000000008.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.S3" Version="3.7.205.10" />
+    <PackageReference Include="CsvHelper" Version="30.0.1" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.20.0" />
+    <PackageReference Include="EFCore.BulkExtensions" Version="7.1.6" />
+    <PackageReference Include="EFCore.NamingConventions" Version="7.0.2" />
+    <PackageReference Include="ExcelDataReader" Version="3.6.0" />
+    <PackageReference Include="ExcelDataReader.DataSet" Version="3.6.0" />
+    <PackageReference Include="IdentityServer4.EntityFramework.Storage" Version="4.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="7.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="7.0.12" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.0.2" />
+    <PackageReference Include="StackExchange.Redis" Version="2.6.122" />
+    <PackageReference Include="System.Data.OleDb" Version="7.0.0" />
+    <PackageReference Include="System.ServiceModel.Duplex" Version="4.10.3" />
+    <PackageReference Include="System.ServiceModel.Federation" Version="4.10.3" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="4.10.3" />
+    <PackageReference Include="System.ServiceModel.Http" Version="4.10.3" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="4.10.3" />
+    <PackageReference Include="System.ServiceModel.Security" Version="4.10.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Izm.Rumis.Application\Izm.Rumis.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+
+</Project>

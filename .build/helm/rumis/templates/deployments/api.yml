@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rumis-api
+spec:
+  replicas: {{ .Values.replicas.api }}
+  selector:
+    matchLabels:
+      app: rumis-api
+  template:
+    metadata:
+      labels:
+        app: rumis-api
+    spec:
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecrets }}
+      {{- end }}
+      containers:
+      - name: rumis-api
+        image: {{ .Values.registry }}/rumis/api:{{ .Values.tag }}
+        ports:
+        - containerPort: 80
+        resources:
+          limits:
+            cpu: "{{ .Values.resources.api.limits.cpu }}"
+            memory: "{{ .Values.resources.api.limits.memory }}"
+          requests:
+            cpu: "{{ .Values.resources.api.requests.cpu }}"
+            memory: "{{ .Values.resources.api.requests.memory }}"
+        startupProbe:
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          failureThreshold: 10
+          httpGet:
+            path: /healthz/ready
+            port: 80
+        readinessProbe:
+          httpGet:
+            path: /healthz/ready
+            port: 80
+        livenessProbe:
+          httpGet:
+            path: /healthz/live
+            port: 80
+        envFrom:
+          - configMapRef:
+              name: rumis-api-config
+          - secretRef:
+              name: rumis-api-secret    

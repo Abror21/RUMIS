@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rumis-app
+spec:
+  replicas: {{ .Values.replicas.app }}
+  selector:
+    matchLabels:
+      app: rumis-app
+  template:
+    metadata:
+      labels:
+        app: rumis-app
+    spec:
+      {{- if .Values.imagePullSecrets }}
+      imagePullSecrets:
+        - name: {{ .Values.imagePullSecrets }}
+      {{- end }}
+      containers:
+      - name: rumis-app
+        image: {{ .Values.registry }}/rumis/app:{{ .Values.tag }}
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            cpu: "{{ .Values.resources.app.limits.cpu }}"
+            memory: "{{ .Values.resources.app.limits.memory }}"
+          requests:
+            cpu: "{{ .Values.resources.app.requests.cpu }}"
+            memory: "{{ .Values.resources.app.requests.memory }}"
+        startupProbe:
+          initialDelaySeconds: 180
+          periodSeconds: 5
+          failureThreshold: 6
+          httpGet:
+            path: /
+            port: 3000
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+        volumeMounts:
+        - name: environment
+          mountPath: "/app/.env.production"
+          subPath: ".env.production"
+      volumes:
+        - name: environment
+          secret:
+            secretName: rumis-app-secret
+            items:
+            - key: env
+              path: .env.production

@@ -1,0 +1,5 @@
+<RUMIS_socialie_statusi xmlns="">
+  <Student Name="ADMIN" OtherNames="" Surname="ADMIN" PersonCode="00000000000" BirthDate="2005-01-10T00:00:00+02:00">
+    <SocialStatus DateTo="2024-10-15T00:00:00+03:00" StatusTypeCode="P" StatusTypeName="Pedagoģiski medicīniskās komisijas atzinumi"/>
+  </Student>
+</RUMIS_socialie_statusi>

@@ -1,0 +1,286 @@
+﻿# ASP.NET vide (Development/Staging/Production)
+environment: Production
+# Docker konteineru/attēlu reģistrs
+registry: 
+# Docker konteineru/attēlu versija
+tag: latest
+# Ārejais URL priekš App komponentes
+appUrl: 
+
+# Lietot Jenkins Secrets
+#
+# Norādot vērtību netiks veidoti K8s secrets objekti
+# ar Helm Chart instalāciju.
+jenkinsSecrets: 
+
+# Docker konteineru/attēlu reģistra pieslēguma noslēpums 
+imagePullSecrets: 
+
+# Ingress iestatījumi
+ingress:
+  # Ingress class name
+  #
+  # Atstājot šo vērtību tukšu, netiks veidots K8s
+  # ingress objekts ar Helm Chart isntalāciju.
+  ingressClassName: nginx
+  # NGINX ingress konfigurācija
+  nginx:
+    # Vai NGINX ingress ir iespējots
+    enabled: true
+    # Vai ingress ir community versija
+    isCommunity: false
+    # Session affinity cookie name
+    sessionAffinityCookieName: Rumis.Affinity
+    # Atļauto pieprasījumu skaita reizinātājs (limit-burst-multiplier)
+    #
+    # Atlstīts tikai Community versijā (isCommunity = true).
+    burstMultiplier: 5
+    # Atļauto savienojumu skaits no vienas IP adreses
+    #
+    # Atlstīts tikai Community versijā (isCommunity = true).
+    connectionLimit: 30
+    # Atļauto pieprasījumu skaits no vienas IP adreses minūtē
+    #
+    # Atlstīts tikai Community versijā (isCommunity = true).
+    rpm: 50
+    # Atļauto pieprasījumu skaits no vienas IP adreses sekundē
+    #
+    # Atlstīts tikai Community versijā (isCommunity = true).
+    rps: 8
+    # Ingress maršrutēšanas papildus konfigurācija
+    locationSnippet: |
+      add_header Strict-Transport-Security "max-age=63072000; preload";
+      add_header X-Frame-Options DENY;
+      add_header X-Xss-Protection "1; mode=block";
+      add_header X-Content-Type-Options nosniff;
+      add_header X-Permitted-Cross-Domain-Policies none;
+      add_header Referrer-Policy no-referrer;
+      add_header Access-Control-Expose-Headers Content-Disposition;
+      server_tokens off;
+  # Aplikācijas hosta nosaukums 
+  host: 
+
+# ADFS/LatvijaLV konfigurācija
+adfs:
+  # Aplikācijas ADFS/LatvijaLV autentifikācijas bāzes URL
+  baseUrl:
+  enabled: true
+  # ADFS/LatvijaLV matadatu adreses URL
+  metadataaddress:
+  # ADFS/LatvijaLV reģistrētā wtrealm vērtība
+  wtrealm: 
+
+# Savienojumu konfigurācija 
+connectionStrings:
+  # Redis savienojuma vērtība (Connection string)
+  redis:
+  # Rumis MySql vai MariaDb datubāzes savienojumu vērtība (Connection string)
+  rumisDatabase:
+
+# Api komponentes konfigurācija
+api:
+  # Minimālais .NET ThreadPool uztērēto thread skaits
+  #
+  # Ja nav zināšanu par šo vērtību, ieteicams to nemainīt. (https://stackoverflow.com/a/46836192)
+  # Vērtībai būtu jāpalielinās, līdz ar sagaidāmo vienlaicīgo lietotāju skaitu (vls).
+  # Ieteicams uzturēt nedaudz mazāku skaitu nekā vls / replicas.api.
+  minThreadCount: 500
+
+# App komponentes konfigurācija
+app:
+  # .env faila saturs
+  environment:  
+
+# Autentifikācijas konfigurācija
+auth:
+  # Admin (UserName:admin) lietotāja parole
+  #
+  # Šī vērtība tiek uzstādīta tikai tad, kad Admin lietotājam PasswordHash vērtība IdentityUserLogins tabulā ir tukša.
+  # Lai atkārtoti uzstādītu šo vērtību, Admin lietotājam PasswordHash vērtību no IdentityUserLogins tabulas ir jāizdzēš.
+  adminPassword:
+  # Parciālā cookie šifrēšanas parole
+  #
+  # Parole ir parciāla, jo aplikācija papildina tās vērtību ar encryptionSalt vērtību.
+  encryptionPassword:
+  # Parciālā cookie šifrēšanas sāls
+  #
+  # Sāls vērtību darbojas kā papildinājums encryptionPassword vērtībai.
+  encryptionSalt:
+  # Pāradresācijas URL autentifikācijas kļūdu gadījumos
+  errorRedirectUrl:
+  # ADFS/LatvijaLV autentifikācijas Admin lietotāja vārds
+  externalAdminUserName: Admin
+  # Vai ADFS/LatvijaLV autentifikācija ir iespējota
+  externalEnabled: true
+  # ADFS/LatvijaLV autentifikācijas ceļš Auth komponentes URL
+  externalProvider: adfs
+  # ADFS/LatvijaLV autentifikācijas URL
+  externalUrl:
+  # ADFS/LatvijaLV Admin lomas nosaukums
+  #
+  # Izmantots, lai automātiski piešķirtu Admin lomu lietotājiem no ADFS/LatvijaLV
+  externalAdminRole: Admin
+  # Vai formu autentifikācija ir iespējota
+  formsEnabled: true
+  # Sesijas noilguma termiņš minūtēs
+  idleTimeoutInMinutes: 15
+  # Cik minūtes pirms sesijas noilguma beigām rādīt brīdinājuma ziņojumu
+  notifyBeforeSessionEndsInMinutes: 2
+  # Pāradresācijas URL pēc atslegšanās no sistāmas
+  signOutRedirectUrl: 
+  # Auth komponentes lietotāju datu šifrēšanas parole
+  ticketPassword:
+  # Auth komponentes lietotāju datu nosūtīšanas URL
+  ticketReplyUrl: 
+  # JWT dzīves ilgums minūtēs
+  # tokenLifeTimeInMinutes: 10
+  # JWT atslēga/parole
+  #
+  # Vismaz 32 simbolus garš teksts, kas atbalsta arī speciālos simbolus.
+  tokenSecurityKey:
+  # Lietotāja profile iestatījumi
+  userProfile:
+    # Lietotāja profile JWT dzīves ilgums minūtēs
+    # tokenLifeTimeInMinutes: 10
+    # Lietotāja profila JWT atslēga/parole
+    #
+    # Vismaz 32 simbolus garš teksts, kas atbalsta arī speciālos simbolus.
+    tokenSecurityKey:
+  
+# Saistītā e-pakalpojuma publiskais URL
+eServicePublicUrl: 
+
+# MySql vai MariaDb konfigurācija
+mysql:
+  # MySql vai MariaDb servera versija
+  version:
+
+# Paziņojumu konfigurācija
+notifications:
+  # Vai pziņojumi ir iespējoti
+  enabled: true
+  # EAdreses paziņojumu konfigurācija
+  eAddress:
+    # Vai EAdreses paziņojumi ir iespējoti
+    enabled: true
+    # EAdreses komponentes API URL, piem., https://some-url.com/api/
+    serviceApiUrl:
+    # Vai validēt e-adreses servera sertifikātu
+    validateSsl: true
+
+# Repliku skaits komponentēm, izņemot Tasks.
+# Tasks komponenti ir paredzēts darbināt vienā replikā.
+replicas:
+  api: 1
+  app: 1
+  auth: 1
+
+# Konteineru resursu ierobežojumi
+resources:
+  # API konteinerim
+  api:
+    limits:
+      cpu: "1500m"
+      memory: "2Gi"
+    requests:
+      cpu: "1000m"
+      memory: "1Gi"
+  # APP konteinerim
+  app:
+    limits:
+      cpu: "1500m"
+      memory: "2Gi"
+    requests:
+      cpu: "750m"
+      memory: "1Gi"
+  # AUTH konteinerim
+  auth:
+    limits:
+      cpu: "100m"
+      memory: "128Mi"
+    requests:
+      cpu: "50m"
+      memory: "32Mi"
+  # TASKS konteinerim
+  tasks:
+    limits:
+      cpu: "100m"
+      memory: "496Mi"
+    requests:
+      cpu: "50m"
+      memory: "128Mi"
+
+# S3 konfigurācija
+s3:
+  # API piekļuves atslaga
+  accessKey: 
+  # API piekļuves noslēpums
+  accessSecret: 
+  # Bucket nosaukums
+  bucketName: rumis
+  # API krātuves URL
+  storageUrl: 
+  # Izmantot HTTP nevis HTTPS
+  useHttp: false
+
+# SMTP konfigurācija
+smtp:
+  # Iespējot SSL
+  enableSsl: true
+  # E-pasta adrese, no kuras tiek sūtīts
+  from: 
+  # E-pasta servera ports
+  port: 25
+  # E-pasta serveris
+  server:
+  # E-pasta servera lietotāja vārds
+  username: 
+  # E-pasta servera lietotāja parole
+  password: 
+
+# Statisko failu konfigurācija
+staticFiles:
+  cache:
+    duration: 3600
+  path: /static
+
+# TLS konfigurācija
+tls:
+  # Vai TLS konfigurācija ir iespējota
+  #
+  # Ja TLS konfigurācija nav iespējota, tad netiks veidots K8s secret objekts.
+  enabled: true
+  # Ja nepieciešams K8s secret objekts priekš ingress, bet tas jau eksistē,
+  # norādīt šeit secret objekta nosaukumu.
+  secretName:
+  # Vai forsēt TLS lietošanu
+  force: true
+  # true - uzturēt TLS līdz komponentēm
+  # false - nomest TLS ingress objektā
+  sslPassthrough: true
+  # TLS sertifikāta vērtība
+  crt:
+  # TLS atslēgas vērtība
+  key:
+
+# VIIS klienta konfigurācija
+viis:
+  # UniversalDataSetService SOAP servisa URL
+  endpointUrl:
+  # Parole
+  password: 
+  # Lietotājvārds
+  username: 
+
+# VRAA konfigurācija
+vraa:
+  # VRAA API, piem., introspect, bāzes URL
+  baseUrl: https://ha.vraa.gov.lv/STS/VISS.Pfas.STS/oauth2/
+  # VRAA klienta ID - tikai GUID/UUID bez urn:oauth2: prefiksa
+  clientId: 
+  # VRAA klienta noslēpums
+  clientSecret: 
+
+# Windows autentifikācijas konfigurācija
+windows:
+  enabled: false

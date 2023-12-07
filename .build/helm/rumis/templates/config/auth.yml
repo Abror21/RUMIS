@@ -1,0 +1,11 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: rumis-auth-config
+data:
+  ADFS_BASE_URL: {{ .Values.adfs.baseUrl }}
+  ADFS_ENABLED: '{{ .Values.adfs.enabled }}'
+  ASPNETCORE_ENVIRONMENT: {{ .Values.environment }}
+  ERROR_REDIRECT_URL: {{ .Values.auth.errorRedirectUrl }}
+  SIGN_OUT_REDIRECT_URL: {{ .Values.auth.signOutRedirectUrl }}
+  WINDOWS_ENABLED: '{{ .Values.windows.enabled }}'

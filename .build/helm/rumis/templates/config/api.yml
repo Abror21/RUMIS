@@ -1,0 +1,32 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: rumis-api-config
+data:
+  APP_URL: {{ .Values.appUrl }}
+  AUTH_EXTERNAL_ADMIN_USERNAME: {{ .Values.auth.externalAdminUserName }}
+  AUTH_EXTERNAL_ENABLED: '{{ .Values.auth.externalEnabled }}'
+  AUTH_EXTERNAL_PROVIDER: {{ .Values.auth.externalProvider }}
+  AUTH_EXTERNAL_URL: {{ .Values.auth.externalUrl }}
+  AUTH_FORMS_ENABLED: '{{ .Values.auth.formsEnabled }}'
+  AUTH_NOTIFY_BEFORE_TIMEOUT_IN_MINUTES: '{{ .Values.auth.notifyBeforeSessionEndsInMinutes }}'
+  ASPNETCORE_ENVIRONMENT: {{ .Values.environment }}
+  EADDRESS_SERVICE_API_URL: '{{ .Values.notifications.eAddress.serviceApiUrl }}'
+  EADDRESS_VALIDATE_SERVER_CERTIFICATE: '{{ .Values.notifications.eAddress.validateSsl }}'
+  ESERVICE_PUBLIC_URL: {{ .Values.eServicePublicUrl }}
+  MIN_THREAD_COUNT: '{{ .Values.api.minThreadCount }}'
+  MYSQL_VERSION: '{{ .Values.mysql.version }}'
+  NOTIFICATIONS_ENABLED: '{{ .Values.notifications.enabled }}'
+  NOTIFICATIONS_EADDRESS_ENABLED: '{{ .Values.notifications.eAddress.enabled }}'
+  S3_BUCKET_NAME: '{{ .Values.s3.bucketName }}'
+  S3_STORAGE_URL: '{{ .Values.s3.storageUrl }}'
+  S3_USE_HTTP: '{{ .Values.s3.useHttp }}'
+  SMTP_ENABLESSL: '{{ .Values.smtp.enableSsl }}'
+  SMTP_FROM: {{ .Values.smtp.from }}
+  SMTP_PORT: '{{ .Values.smtp.port }}'
+  SMTP_SERVER: {{ .Values.smtp.server }}
+  SESSION_IDLE_TIMEOUT_IN_MINUTES: '{{ .Values.auth.idleTimeoutInMinutes }}'
+  STATIC_FILE_CACHE_DURATION: '{{ .Values.staticFiles.cache.duration }}'
+  STATIC_FILE_PATH: {{ .Values.staticFiles.path }}
+  VRAA_BASE_URL: {{ .Values.vraa.baseUrl }}
+  VISS_SERVICE_ENDPOINT_ADDRESS: {{ .Values.viis.endpointUrl }}

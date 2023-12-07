@@ -1,0 +1,8 @@
+<RUMIS_dati xmlns="">
+   <Student Name="TESTA 1 " OtherNames="" Surname="PERSONA 1" PersonCode="12345610001" BirthDate="2010-03-07T00:00:00+02:00" SubStatus="">
+      <Institution Name="Rīgas 40. vidusskola" RegNr="3413900797" FounderName="Rīgas valstspilsētas pašvaldība" FounderATUCCode="001000">
+         <Class Type="K" ClassGrade="7" Parallel="" GroupName="" EducationProgramName="Pamatizglītības programma" EducationProgramCode="21017111"/>
+         <StudyParticapition EducationProgramName="Pamatizglītības programma" EducationProgramCode="21017111"/>
+      </Institution>
+   </Student>
+</RUMIS_dati>

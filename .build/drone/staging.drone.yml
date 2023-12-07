@@ -1,0 +1,135 @@
+kind: pipeline
+type: docker
+name: Build rumis/app Docker image
+
+trigger:
+  branch:
+  - master
+  event:
+    exclude:
+    - pull_request
+
+steps:
+- name: Build and push Docker image
+  image: plugins/docker
+  settings:
+    repo:
+      from_secret: docker_repo_app
+    context: .
+    dockerfile: Izm.Rumis/Izm.Rumis.App/ClientApp/Dockerfile
+    tags:
+      - latest
+      - ${DRONE_COMMIT}
+    dry_run: false
+    registry:
+      from_secret: docker_registry
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    insecure: true
+
+---
+kind: pipeline
+type: docker
+name: Build rumis/api Docker image
+
+trigger:
+  branch:
+  - master
+  event:
+    exclude:
+    - pull_request
+
+steps:
+- name: Build and push Docker image
+  image: plugins/docker
+  settings:
+    repo:
+      from_secret: docker_repo_api
+    context: .
+    dockerfile: Izm.Rumis/Izm.Rumis.Api/Dockerfile
+    tags:
+      - latest
+      - ${DRONE_COMMIT}
+    dry_run: false
+    registry:
+      from_secret: docker_registry
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    insecure: true
+
+depends_on:
+- Build rumis/app Docker image
+
+---
+kind: pipeline
+type: docker
+name: Build rumis/auth Docker image
+
+trigger:
+  branch:
+  - master
+  event:
+    exclude:
+    - pull_request
+
+steps:
+- name: Build and push Docker image
+  image: plugins/docker
+  settings:
+    repo:
+      from_secret: docker_repo_auth
+    context: .
+    dockerfile: Izm.Rumis/Izm.Rumis.Auth/Dockerfile
+    tags:
+      - latest
+      - ${DRONE_COMMIT}
+    dry_run: false
+    registry:
+      from_secret: docker_registry
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    insecure: true
+
+depends_on:
+- Build rumis/api Docker image
+
+---
+kind: pipeline
+type: docker
+name: Build rumis/tasks Docker image
+
+trigger:
+  branch:
+  - master
+  event:
+    exclude:
+    - pull_request
+
+steps:
+- name: Build and push Docker image
+  image: plugins/docker
+  settings:
+    repo:
+      from_secret: docker_repo_tasks
+    context: .
+    dockerfile: Izm.Rumis/Izm.Rumis.Tasks/Dockerfile
+    tags:
+      - latest
+      - ${DRONE_COMMIT}
+    dry_run: false
+    registry:
+      from_secret: docker_registry
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+    insecure: true
+
+depends_on:
+- Build rumis/auth Docker image

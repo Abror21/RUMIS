@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  izm.rumis.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DATABASE_CONNECTION_STRING=server=db;port=3306;database=rumis;user=root;password=root
+      - REDIS_CONNECTION_STRING=redis
+      - S3_STORAGE_URL=http://s3:9000
+    ports:
+      - "33118:80"
+  
+  izm.rumis.auth:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DATABASE_CONNECTION_STRING=server=db;port=3306;database=rumis;user=root;password=root
+      - TICKET_REPLY_URL=http://izm.rumis.api/_api/auth/ticket
+    ports:
+      - "3085:80"

@@ -1,0 +1,8 @@
+<RUMIS_dati xmlns="">
+   <Student Name="JUNIORS" OtherNames="" Surname="ERBS" PersonCode="32306211190" BirthDate="2010-03-08T00:00:00+02:00" SubStatus="">
+      <Institution Name="Rīgas 1. Kristīgā pamatskola" RegNr="3612903309" FounderName="Rīgas valstspilsētas pašvaldība" FounderATUCCode="001000">
+         <Class Type="K" ClassGrade="7" Parallel="" GroupName="" EducationProgramName="Pamatizglītības programma" EducationProgramCode="21011111"/>
+         <StudyParticapition EducationProgramName="Pamatizglītības programma" EducationProgramCode="21011111"/>
+      </Institution>
+   </Student>
+</RUMIS_dati>

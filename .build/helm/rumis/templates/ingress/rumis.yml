@@ -1,0 +1,67 @@
+{{- if .Values.ingress.ingressClassName }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rumis-ingress
+  labels:
+    name: rumis-ingress
+  annotations:
+    kubernetes.io/ingress.class: {{ .Values.ingress.ingressClassName }}
+    ingress.kubernetes.io/ssl-redirect: "{{ .Values.tls.force }}"
+  {{- if eq .Values.ingress.nginx.enabled true }}
+    {{- if eq .Values.ingress.nginx.isCommunity true }}
+    nginx.ingress.kubernetes.io/affinity: cookie
+    nginx.ingress.kubernetes.io/affinity-mode: persistent
+    nginx.ingress.kubernetes.io/session-cookie-name: {{ .Values.ingress.nginx.sessionAffinityCookieName }}
+    nginx.ingress.kubernetes.io/session-cookie-samesite: Strict
+    nginx.ingress.kubernetes.io/limit-burst-multiplier: "{{ .Values.ingress.nginx.burstMultiplier }}"
+    nginx.ingress.kubernetes.io/limit-connections: "{{ .Values.ingress.nginx.connectionLimit }}"
+    nginx.ingress.kubernetes.io/limit-rpm: "{{ .Values.ingress.nginx.rpm }}"
+    nginx.ingress.kubernetes.io/limit-rps: "{{ .Values.ingress.nginx.rps }}"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "{{ .Values.tls.force }}"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "{{ .Values.tls.sslPassthrough }}"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      {{ .Values.ingress.nginx.locationSnippet | nindent 6 }}
+    {{- else }}
+    nginx.org/location-snippets: |
+      {{ .Values.ingress.nginx.locationSnippet | nindent 6 }}
+    {{- end }}
+  {{- end }}
+spec:
+  ingressClassName: {{ .Values.ingressClassName }}
+  {{- if eq .Values.tls.enabled true }}
+  tls:
+  - hosts:
+      - {{ .Values.ingress.host }}
+    {{- if not .Values.tls.secretName }}
+    secretName: rumis-tls
+    {{- else }}
+    secretName: {{ .Values.tls.secretName }}
+    {{- end }}
+  {{- end }}
+  rules:
+  - host: {{ .Values.ingress.host }}
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: rumis-app
+            port: 
+              number: 80
+      - pathType: Prefix
+        path: "/_api"
+        backend:
+          service:
+            name: rumis-api
+            port: 
+              number: 80
+      - pathType: Prefix
+        path: "/_auth"
+        backend:
+          service:
+            name: rumis-auth
+            port: 
+              number: 80
+{{- end }}

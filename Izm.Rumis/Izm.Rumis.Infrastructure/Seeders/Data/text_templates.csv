@@ -1,0 +1,93 @@
+﻿Code;Title;Content
+application_deadline_changed_notification_body;Pieteikumam mainīts termiņš (saturs);"Labdien!
+ 
+Informējam, ka resursam {{Manufacturer}} {{ModelName}}, kas piešķirts uz pieņemšanas - nodošanas akta Nr. {{PNANumber}} pamata, ir mainīts atgriešanas termiņš,
+ 
+Resursu nepieciešams atgriezt līdz {{Deadline}}.
+ 
+Izmaiņas veica {{EducationalInstitution}}.
+
+
+Šis ir Izglītības resursu uzskaites informācijas sistēmas automatizēti sagatavots paziņojums. Lūdzam uz to neatbildēt!"
+application_deadline_changed_notification_subject;Pieteikumam mainīts termiņš (tēma);Pieteikumam {{ApplicationNumber}} mainīts termiņš
+application_declined_notification_body;Pieteikums noraidīts (saturs);"Labdien!
+ 
+Informējam, ka Jūsu pieteikums Nr. {{ApplicationNumber}} par resursa {{ResourceSubType}} piešķiršanu ir atteikts.
+ 
+Atteikumu reģistrēja {{EducationalInstitution}}.
+
+
+Šis ir Izglītības resursu uzskaites informācijas sistēmas automatizēti sagatavots paziņojums. Lūdzam uz to neatbildēt!"
+application_declined_notification_subject;Pieteikums noraidīts (tēma);Pieteikums {{ApplicationNumber}} noraidīts
+application_deleted_notification_body;Pieteikums dzēsts (saturs);"Labdien!
+
+Informējam, ka Jūsu pieteikums Nr. {{ApplicationNumber}} par resursu: {{ResourceSubType}} tika dzēsts.
+ 
+Pieteikuma dzēšanu veica {{EducationalInstitution}}.
+
+
+Šis ir Izglītības resursu uzskaites informācijas sistēmas automatizēti sagatavots paziņojums. Lūdzam uz to neatbildēt!"
+application_deleted_notification_subject;Pieteikums dzēsts (tēma);Pieteikums {{ApplicationNumber}} dzēsts
+application_submitted_notification_body;Pieteikums reģistrēts (saturs);"Labdien!
+
+Informējam, ka Jūsu pieteikums Nr. {{ApplicationNumber}} par resursu {{ResourceSubType}} ir nosūtīts izglītības iestādei {{EducationalInstitution}}
+
+Pieteikuma statusam varat sekot līdzi e-pakalpojuma {{ApplicationPublicUrl}} pieteikumu sarakstā.
+
+
+Šis ir Izglītības resursu uzskaites informācijas sistēmas automatizēti sagatavots paziņojums. Lūdzam uz to neatbildēt!"
+application_submitted_notification_subject;Pieteikums reģistrēts (tēma);Pieteikums reģistrēts
+application_resource_prepared_notification_body;Pieteikuma resurss sagatavots (saturs);"Labdien!
+
+Informējam, ka resurss {{Manufacturer}} {{ModelName}} ir gatavs izsniegšanai.
+
+{{EducationalInstitution}} ar Jums sazināsies uz kontaktinformācijā norādīto tālruņa numuru, lai vienotos par saņemšanas kārtību.
+
+Pirms resursa saņemšanas, lūdzam e-paklapojumā {{ApplicationPublicUrl}}, iepazīties ar pieņemšanas-nodošanas aktu un citiem saistošiem dokumentiem.
+
+
+Lūdzam resursa saņemšanu apstiprināt e-pakalpojumā, izmantojot viedierīci vai datoru! Dokumenti tiks sagatavoti elektroniski un tie nebūs jāizdrukā.
+
+
+Šis ir Izglītības resursu uzskaites informācijas sistēmas automatizēti sagatavots paziņojums. Lūdzam uz to neatbildēt!"
+application_resource_prepared_notification_subject;Pieteikuma resurss sagatavots (tēma);Pieteikuma resurss sagatvots
+application_resource_lost_notification_body;Pieteikuma resurss nozaudēts (saturs);"Labdien!
+
+Informējam, ka izglītības iestādei {{EducationalInstitution}} ir nosūtīts iesniegums par resursa nozaudēšanu vai nozagšanu.
+
+Resursa dati:
+
+{{Manufacturer}} {{ModelName}} {{Model}}
+Sērijas Nr. {{ResourceSerialNumber}}
+Inventāra Nr. {{InventoryNumber}}
+Pieņemšanas nodošanas akta Nr. {{PNANumber}}
+
+
+Šis ir Izglītības resursu uzskaites informācijas sistēmas automatizēti sagatavots paziņojums. Lūdzam uz to neatbildēt!"
+application_resource_lost_notification_subject;Pieteikuma resurss nozaudēts (tēma);Pieteikuma resurss nozaudēts
+application_resource_returned_notification_body;Pieteikuma resurss atgriezts (saturs);"Labdien!
+
+Informējam, ka Jums izsniegtais resurss {{Manufacturer}}, Sērijas Nr. {{ResourceSerialNumber}} (Pieteikuma Nr. {{ApplicationNumber}} ir reģistrēts kā atgriezts izglītības iestādē.
+
+Atgriešanas datums: {{ReturnDate}}
+Resursa atgriešanas statuss: {{ResourceStatus}}
+Bojājuma veids: {{DamageType}}
+Piezīmes par atgriešanu: {{Notes}}
+Atgriešanu reģistrēja: {{Registrator}}
+
+
+Šis ir Izglītības resursu uzskaites informācijas sistēmas automatizēti sagatavots paziņojums. Lūdzam uz to neatbildēt!"
+application_resource_returned_notification_subject;Pieteikuma resurss atgriezts (tēma);Pieteikuma resurss atgriezts
+application_resource_target_status_changed_notification_body;Resursa lietotāja statusa maiņa (saturs);"Labdien!
+
+Informējam, ka Resursa lietotāja {{ResourceTargetPerson}} statuss ir mainījies uz - {{ResourceTargetPersonStatus}}.
+
+Saistītais Pieņemšanas nodošanas akts Nr. {{PNANumber}}.
+
+
+
+Šis ir Izglītības resursu uzskaites informācijas sistēmas automatizēti sagatavots paziņojums. Lūdzam uz to neatbildēt!"
+application_resource_target_status_changed_notification_subject;Resursa lietotāja statusa maiņa (tēma);Resursa lietotāja statusa maiņa
+application_as_learner_declined_reason_by_monitoring;Pieteikuma noraidīšanas iemesls (izglītojamais) monitoringa procesā;"Pieteikums atteikts, jo {{ResourceTargetPerson}} pārtraucis mācības Izglītības iestādē {{EducationalInstitution}}"
+application_as_employee_declined_reason_by_monitoring;Pieteikuma noraidīšanas iemesls (darbinieks) monitoringa procesā;"Pieteikums atteikts, jo {{ResourceTargetPerson}} pārtraucis darba attiecības ar Izglītības iestādi {{EducationalInstitution}}"
+rumis_terms_of_use;RUMIS lietošanas noteikumi;"I. Vispārīgie jautājumi<br/>1. Šie noteikumi nosaka RUMIS portāla https://rumis.lv (turpmāk – pakalpojumu portāls) lietošanas kārtību.<br/>2. Noteikumos lietotie termini:<br/>2.1. autentifikācija – process, kurā veic subjekta (klienta) identitātes pārbaudi;<br/>2.2.Lietotājs – fiziska persona, kas izmanto pakalpojumu portālā pieejamo funkcionalitāti.<br/>3. pakalpojumu portāla pārzinis – Rīgas digitālā aģentūra (turpmāk Pakalpojuma sniedzējs), nodrosīnot pakalpojumu portālu funkcionalitāti, kas pieprasīts, izmantojot elektroniskās identifikācijas līdzekļus, uzskata, ka pakalpojumu portālu pieprasījuma (pieteikuma) iesniedzējs, veicot autentifikāciju ar Vienotā pieteikšanās moduli un pakalpojuma saņēmējs ir viena un tā pati persona.<br/>4. Piekrītot šiem noteikumiem, klients apliecina, ka:<br/>4.1. lietos pakalpojumu portālu atbilstoši tā specifikai;<br/>4.2. neizmantos pakalpojumu portālu nelikumīgu mērķu sasniegšanai;<br/>4.3.pakalpojumu portāls tiks izmantoti lietotāja interesēs, nevis citas personas uzdevumā, lai neatklātu šīs personas identitāti.<br/>5. Par sniegto pakalpojumu nav noteikta samaksa<br/>II. Lietotāja tiesības, pienākumi un atbildība<br/>7. Lietotājs ir atbildīgs par pakalpojumu portālā norādīto ziņu patiesumu un pilnīgumu.<br/>8. Lietotājs ir atbildīgs par darbībām, kas tiek veiktas pakalpojumu portālā, izmantojot viņa autentifikācijas datus.<br/>9. Lietotājs, izmantojot pakalpojumu portālu, apņemas nelietot vispārpieņemtām pieklājības normām neatbilstošus vārdus.<br/>III. Pakalpojuma sniedzēja pienākumi un atbildība<br/>10. Pakalpojuma sniedzējs ievēro informācijas par klientu un tā veikto darbību konfidencialitāti, šī informācija var tikt izpausta trešajām personām tikai Latvijas Republikā spēkā esošajos normatīvajos aktos noteiktajos gadījumos un kārtībā.<br/>11. Pakalpojuma sniedzējs ir tiesīgi vienpusēji veikt izmaiņas sniedzamo pakalpojumu portālu funkcionalitātes apjomā un kārtībā.<br/>12. Pakalpojuma sniedzējs neatbild par:<br/>12.1. Lietotāja darbībām pakalpojumu portālā un iespējamiem zaudējumiem, kas radušies, ja klienta autentifikācijas dati nonākuši citu personu rīcībā;<br/>12.2. pakalpojumu portālu izmantošanu un tās sekām, ja tajā pieprasītos dokumentus klients ir viltojis vai nelikumīgi noformējis vai iesniedzis;<br/>12.3. traucējumiem pakalpojumu portāla darbībā, kas radušies no pašvaldības tehniskajiem resursiem neatkarīgu elektronisko sakaru traucējumu gadījumos vai klienta datortehnikas lietošanas dēļ.<br/>13. Pakalpojuma sniedzējs negarantē pakalpojumu portāla kvalitātes un apjoma atbilstību klienta priekšstatiem."

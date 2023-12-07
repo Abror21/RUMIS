@@ -1,0 +1,21 @@
+@model IEnumerable<string>
+
+@if (!Model.Any())
+{
+    <p>No authentication option is available.</p>
+}
+else
+{
+    <p>Choose authentication type:</p>
+    <ul>
+        @if (Model.Contains("adfs"))
+        {
+            <li><a href="/adfs">ADFS</a></li>
+        }
+
+        @if (Model.Contains("windows"))
+        {
+            <li><a href="/windows">Windows</a></li>
+        }
+    </ul>
+}

@@ -1,0 +1,14 @@
+<RUMIS_dati xmlns="">
+   <Student Name="SOMEONE" OtherNames="" Surname="TEST" PersonCode="31011501123" BirthDate="2008-05-11T00:00:00+03:00" SubStatus="">
+      <Institution Name="Rīgas 1. Kristīgā pamatskola" RegNr="3612903309" FounderName="Rīgas valstspilsētas pašvaldība" FounderATUCCode="001000">
+         <Class Type="K" ClassGrade="6" Parallel="" GroupName="" EducationProgramName="Pamatizglītības programma" EducationProgramCode="21011111"/>
+         <StudyParticapition EducationProgramName="Pamatizglītības programma" EducationProgramCode="21011111"/>
+      </Institution>
+   </Student>
+   <Student Name="ANOTHER" OtherNames="" Surname="TEST" PersonCode="35061820033" BirthDate="2010-03-07T00:00:00+02:00" SubStatus="">
+      <Institution Name="Rīgas 1. Kristīgā pamatskola" RegNr="3612903309" FounderName="Rīgas valstspilsētas pašvaldība" FounderATUCCode="001000">
+         <Class Type="K" ClassGrade="5" Parallel="" GroupName="" EducationProgramName="Pamatizglītības programma" EducationProgramCode="21011111"/>
+         <StudyParticapition EducationProgramName="Pamatizglītības programma" EducationProgramCode="21011111"/>
+      </Institution>
+   </Student>
+</RUMIS_dati>
